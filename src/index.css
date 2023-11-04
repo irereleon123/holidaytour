@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Roboto:wght@400;500;700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* In a CSS file */
+.custom-bg-image {
+  background-image: url("./assets/mountain.jpg");
+  background-size: cover; /* Adjust as needed */
+  background-position: center; /* Adjust as needed */
+  z-index: 0;
+  filter: brightness(1);
+}
+
+/* Style the background image */
+.bg-image {
+  background-image: url("./assets/mountain.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.6); /* Adjust the brightness value as needed */
+  position: absolute;
+  top: 0rem;
+  left: 0;
+  right: 0;
+  bottom: 0rem;
+  z-index: -1;
+}
+
+.bg-image1 {
+  background-image: url("./assets/plane.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5); /* Adjust the brightness value as needed */
+  position: absolute;
+  top: 0.5rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.bg-image2 {
+  background-image: url("./assets/italy.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.6); /* Adjust the brightness value as needed */
+  position: absolute;
+  top: 0.5rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.bg-idea {
+  background-image: linear-gradient(
+      rgba(194, 157, 89, 0.8),
+      rgba(194, 157, 89, 0.8)
+    ),
+    url("./assets/Idea.jpg");
+  background-size: cover;
+  background-position: center;
+  /* background-blend-mode: overlay; */
+  filter: brightness(1);
+  z-index: 0;
+}
+
+.bg-footer {
+  background-image: linear-gradient(rgb(50, 49, 50, 0.9), rgb(50, 49, 50, 0.9)),
+    url("./assets/world.jpg");
+  background-size: cover;
+  background-position: center;
+  /* background-blend-mode: overlay; */
+  filter: brightness(1);
+  z-index: 10;
+}
+
+table {
+  padding: 30px; /* Add padding to the entire table */
+}
