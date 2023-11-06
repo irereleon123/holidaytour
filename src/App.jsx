@@ -27,7 +27,7 @@ function App() {
         <p className="font-bold font-body min-w-xl md:text-7xl text-4xl py-2 px-2 text-white container mx-auto ">
           Enjoy the travel with
           <span className="py-0"> life </span><br />
-          <span class=" bg-secondary-300">holiday planner</span>
+          <span class=" bg-orange-300">holiday planner</span>
         </p>
       </div>
 
