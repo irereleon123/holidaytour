@@ -112,7 +112,7 @@ const piedata = {
           <div className="w-full lg:w-1/4">
             <Line options={options} data={data} />
           </div>
-          <div className="w-full lg:w-1/2 mt-4 lg:mt-0">
+          <div className="w-full lg:w-1/5 mt-4 lg:mt-0">
             <Pie data={piedata} />
           </div>
         </section>
