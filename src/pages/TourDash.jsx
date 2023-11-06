@@ -103,9 +103,9 @@ const Tour = () => {
                     <img src={item.backdropImage} height={"1%"} width={"20%"} alt={item.destination} />
                   </td>
                   <td className="border border-green-600 px-4 py-2">{item.destination}</td>
-                  <td className="border border-green-600 px-4 py-2">{item.duration}</td>
-                  <td className="border border-green-600 px-4 py-2">{item.groupSize}</td>
-                  <td className="border border-green-600 px-4 py-2">{item.price}</td>
+                  <td className="border border-green-600 px-4 py-2">{item.Duration}</td>
+                  <td className="border border-green-600 px-4 py-2">{item.GroupSize}</td>
+                  <td className="border border-green-600 px-4 py-2">{item.Price}</td>
                   <td className="border border-green-600 px-4 py-2">{item.action}
                     <button onClick={() => handleUpdateTour(item._id)}><AiFillEdit /></button>
                     <button onClick={() => handleDelete(item._id)}><AiFillDelete /></button>
