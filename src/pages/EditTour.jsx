@@ -43,10 +43,19 @@ function EditTour() {
       .then((response) => {
         console.log(response, "response");
         setBackdropImage(response?.data?.backdropImage);
+        setDescription(response?.data?.Description);
         setDestination(response?.data?.destination);
         setDuration(response?.data?.Duration); 
         setGroupSize(response?.data?.GroupSize);
+        setDiscount(response?.data?.Discount);
         setPrice(response?.data?.Price);
+        setTourtype(response?.data?.TourType);
+        setDeparture(response?.data?.Departure);
+        setSeats(response?.data?.Seats);
+        setFrommonth(response?.data?.fromMonth);
+        setTomonth(response?.data?.toMonth);
+        setDeparturetime(response?.data?.departureTime);
+        setReturntime(response?.data?.returnTime);
       })
       .catch((error)=>{
         console.log(error);

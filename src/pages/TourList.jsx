@@ -26,7 +26,7 @@ const TourList = () => {
           </p>
           <p className="tour-description max-w-xl font-light text-left">
             {Description}
-            Far far away
+            
 
           </p>
           <div className="flex space-x-4">

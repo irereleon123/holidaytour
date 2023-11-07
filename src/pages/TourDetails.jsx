@@ -111,7 +111,7 @@ const TourDetails = () => {
     {destination}
   </p>
 </div>
-
+<br /><br /><br /><br /><br />
 <br /><br /><br /><br /><br />
 
       <div className="container mx-auto flex">

@@ -120,7 +120,7 @@ const Tour = () => {
                   <td className="border border-green-600 px-4 py-2">{item.fromMonth}</td>
                   <td className="border border-green-600 px-4 py-2">{item.toMonth}</td>
                   <td className="border border-green-600 px-4 py-2">{item.departureTime}</td>
-                  <td className="border border-green-600 px-4 py-2">{item.ReturnTime}</td>
+                  <td className="border border-green-600 px-4 py-2">{item.returnTime}</td>
                   <td className="border border-green-600 px-4 py-2">
                     <button onClick={() => handleUpdateTour(item._id)}><AiFillEdit /></button>
                     <button onClick={() => handleDelete(item._id)}><AiFillDelete /></button>

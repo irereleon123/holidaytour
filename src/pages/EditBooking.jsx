@@ -13,7 +13,7 @@ const EditBooking = () => {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const params = useParams();
-  const tourId = params.id; // declare the variable as tourId
+  const tourId = params.id; 
   const [isLoading, setIsLoading] = useState(false);
 
 
@@ -32,7 +32,7 @@ const EditBooking = () => {
     })
     .then((response) => {
       console.log(response, "response");
-      setFullName(response?.data?.fullName);
+      setFullName(response?.data?.fullname);
       setEmail(response?.data?.email);
       setConfirmEmail(response?.data?.confirmEmail); 
       setPhone(response?.data?.phone);
@@ -51,15 +51,15 @@ const EditBooking = () => {
     e.preventDefault();
     let token = localStorage.getItem('token');
     let data = new FormData();
-    data.append('tourId', tourId); // use tourId instead of tourID
-    data.append('fullname', fullname);
+    data.append('tourId', tourId)
+    data.append('fullName', fullname);
     data.append('email', email);
     data.append('confirmEmail', confirmEmail);
     data.append('phone', phone);
     data.append('date', date);
     data.append('numberOfTicket', numberOfTicket);
     data.append('message', message);
-    data.append('tourId',tourId); // use tourId instead of tourID
+    data.append('tourId',tourId);
 
     axios({
       method: 'PUT',

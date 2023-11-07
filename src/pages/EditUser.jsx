@@ -64,7 +64,7 @@ axios({
   .then((response) => {
       console.log(response);
       toast.success('user updated successfully');
-      setTimeout(() => navigate('/dashboard/EditUser'), 3000);
+      setTimeout(() => navigate('/dashboard/UserDash'), 3000);
   })
   .catch((error) => {
     console.log(error);
