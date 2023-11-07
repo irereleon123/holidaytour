@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const TourList = () => {
   const TourCard = ({ tour }) => {
-    const { title, Duration, destination, description, Price, backdropImage, _id } = tour;
+    const { title, Duration, destination, Description, Price, backdropImage, _id } = tour;
 
     return (
       <div className="flex flex-col items-start w-full md:w-1/2 lg:w-1/3 py-8">
@@ -25,9 +25,9 @@ const TourList = () => {
             {Duration}
           </p>
           <p className="tour-description max-w-xl font-light text-left">
-            Far far away, behind the word mountains, far from the countries
-            Vokalia and Consonantia, there live the blind texts. Separated they
-            live in Bookmarksgrove.
+            {Description}
+            Far far away
+
           </p>
           <div className="flex space-x-4">
             <p className="tour-price text-3xl font-bold">{Price}</p>
@@ -79,8 +79,7 @@ const TourList = () => {
         Tour list
       </p>
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br />
       <div className="container flex flex-col md:flex-row mx-auto items-center relative">
         <div className="w-full md:w-2/3 flex flex-col items-center md:items-start md:justify-evenly mt-8 md:mt-24">
           <div className="mt-8 md:mt-28">

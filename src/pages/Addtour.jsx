@@ -7,9 +7,18 @@ import { Navigate,useNavigate } from 'react-router-dom';
 function Addtour() {
   const [backdropImage, setBackdropImage] = useState('');
   const [destination, setDestination] = useState('');
+  const [Description, setDescription] = useState('');
   const [Duration, setDuration] = useState('');
   const [GroupSize, setGroupSize] = useState('');
   const [Price, setPrice] = useState('');
+  const [Discount, setDiscount] = useState('');
+  const [TourType, setTourtype] = useState('');
+  const [Departure, setDeparture] = useState('');
+  const [Seats, setSeats] = useState('');
+  const [fromMonth, setFrommonth] = useState('');
+  const [toMonth, setTomonth] = useState('');
+  const [departureTime, setDeparturetime] = useState('');
+  const [returnTime, setReturntime] = useState('');
   const navigate = useNavigate();
 
   const handleFileChange = (e) => {
@@ -21,11 +30,20 @@ function Addtour() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let data= new FormData();
-    data.append('backdropImage',backdropImage),
-    data.append('destination',destination),
-    data.append('Duration',Duration),
-    data.append('GroupSize',GroupSize),
-    data.append('Price',Price)
+    data.append('backdropImage', backdropImage);
+    data.append('destination', destination);
+    data.append('Description', Description);
+    data.append('Duration', Duration);
+    data.append('GroupSize', GroupSize);
+    data.append('Price', Price);
+    data.append('Discount', Discount);
+    data.append('TourType', TourType);
+    data.append('Departure', Departure);
+    data.append('Seats', Seats);
+    data.append('fromMonth', fromMonth);
+    data.append('toMonth', toMonth);
+    data.append('departureTime', departureTime);
+    data.append('returnTime', returnTime);
 
     try {
       let token=localStorage.getItem("token")
@@ -76,6 +94,15 @@ function Addtour() {
             onChange={(event) => setDestination(event.target.value)}
           />
         </label>
+        <label className="block">
+          <span className="text-gray-700">Descrption:</span>
+          <input
+            className="mt-1 block w-1/1 rounded-md bg-gray-100 border-black border-2 focus:border-gray-500 focus:bg-white focus:ring-0"
+            type="text"
+            value={Description}
+            onChange={(event) => setDescription(event.target.value)}
+          />
+        </label>
 
         <label className="block mt-4">
           <span className="text-gray-700">Duration:</span>
@@ -96,6 +123,15 @@ function Addtour() {
             onChange={(event) => setGroupSize(event.target.value)}
           />
         </label>
+        <label className="block">
+          <span className="text-gray-700">Discount:</span>
+          <input
+            className="mt-1 block w-1/1 rounded-md bg-gray-100 border-black border-2 focus:border-gray-500 focus:bg-white focus:ring-0"
+            type="text"
+            value={Discount}
+            onChange={(event) => setDiscount(event.target.value)}
+          />
+        </label>
 
         <label className="block mt-4">
           <span className="text-gray-700">Price:</span>
@@ -104,6 +140,69 @@ function Addtour() {
             type="text"
             value={Price}
             onChange={(event) => setPrice(event.target.value)}
+          />
+        </label>
+        <label className="block">
+          <span className="text-gray-700">Tourtype:</span>
+          <input
+            className="mt-1 block w-1/1 rounded-md bg-gray-100 border-black border-2 focus:border-gray-500 focus:bg-white focus:ring-0"
+            type="text"
+            value={TourType}
+            onChange={(event) => setTourtype(event.target.value)}
+          />
+        </label>
+        <label className="block">
+          <span className="text-gray-700">Departure:</span>
+          <input
+            className="mt-1 block w-1/1 rounded-md bg-gray-100 border-black border-2 focus:border-gray-500 focus:bg-white focus:ring-0"
+            type="text"
+            value={Departure}
+            onChange={(event) => setDeparture(event.target.value)}
+          />
+        </label>
+        <label className="block">
+          <span className="text-gray-700">Seats:</span>
+          <input
+            className="mt-1 block w-1/1 rounded-md bg-gray-100 border-black border-2 focus:border-gray-500 focus:bg-white focus:ring-0"
+            type="text"
+            value={Seats}
+            onChange={(event) => setSeats(event.target.value)}
+          />
+        </label>
+        <label className="block">
+          <span className="text-gray-700">frommonth:</span>
+          <input
+            className="mt-1 block w-1/1 rounded-md bg-gray-100 border-black border-2 focus:border-gray-500 focus:bg-white focus:ring-0"
+            type="text"
+            value={fromMonth}
+            onChange={(event) => setFrommonth(event.target.value)}
+          />
+        </label>
+        <label className="block">
+          <span className="text-gray-700">Tomonth:</span>
+          <input
+            className="mt-1 block w-1/1 rounded-md bg-gray-100 border-black border-2 focus:border-gray-500 focus:bg-white focus:ring-0"
+            type="text"
+            value={toMonth}
+            onChange={(event) => setTomonth(event.target.value)}
+          />
+        </label>
+        <label className="block">
+          <span className="text-gray-700">departuretime:</span>
+          <input
+            className="mt-1 block w-1/1 rounded-md bg-gray-100 border-black border-2 focus:border-gray-500 focus:bg-white focus:ring-0"
+            type="text"
+            value={departureTime}
+            onChange={(event) => setDeparturetime(event.target.value)}
+          />
+        </label>
+        <label className="block">
+          <span className="text-gray-700">Returntime:</span>
+          <input
+            className="mt-1 block w-1/1 rounded-md bg-gray-100 border-black border-2 focus:border-gray-500 focus:bg-white focus:ring-0"
+            type="text"
+            value={returnTime}
+            onChange={(event) => setReturntime(event.target.value)}
           />
         </label>
         <br />

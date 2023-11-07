@@ -64,12 +64,15 @@ const TourDetails = () => {
   };
     let tourId = params.id;
     const [backdropImage, setBackdropImage] = useState('');
-    const [destination, setDestination] = useState();
-    const [Title, setTitle] = useState();
-    const [Description, setDescription] = useState();
-    const [Duration, setDuration] = useState();
-    const [GroupSize, setGroupSize] = useState();
-    const [Price, setPrice] = useState();
+    const [destination, setDestination] = useState('');
+    const [title, setTitle] = useState('');
+    const [Description, setDescription] = useState('');
+    const [Duration, setDuration] = useState('');
+    const [GroupSize, setGroupSize] = useState('');
+    const [Price, setPrice] = useState('');
+    const [Departure, setDeparture] = useState('');
+    const [departureTime, setDepartureTime] = useState('');
+    const [returnTime, setReturnTime] = useState('');
     const fetchTour = () => {
       let token = localStorage.getItem("token");
       axios({
@@ -82,11 +85,14 @@ const TourDetails = () => {
         .then((response) => {
           setBackdropImage(response?.data?.backdropImage);
           setDestination(response?.data?.destination);
-          setTitle(response?.data?.Title);
-          setDescription(response?.data?.Description);
-          setDuration(response?.data?.Duration);
-          setGroupSize(response?.data?.GroupSize);
-          setPrice(response?.data?.Price);
+          setTitle(response?.data?.title); 
+          setDescription(response?.data?.Description); 
+          setDuration(response?.data?.Duration); 
+          setGroupSize(response?.data?.GroupSize); 
+          setPrice(response?.data?.Price); 
+          setDeparture(response?.data?.Departure); 
+          setDepartureTime(response?.data?.departureTime);
+          setReturnTime(response?.data?.returnTime);
           console.log(response);
         })
         .catch((error) => {
@@ -101,7 +107,7 @@ const TourDetails = () => {
     <>
 <div className="text-center mb-5 md:mb-10 lg:mb-20 px-4 md:px-8 lg:px-20 py-40 md:py-60 lg:py-80 relative">
   <div className="absolute top-0 left-0 w-screen h-screen bg-repeat md:bg-no-repeat" style={{ backgroundImage: `url(${backdropImage})` }} />
-  <p className="font-bold font-body md:text-6xl lg:text-7xl text-3xl md:text-4xl lg:text-4xl py-2 px-2 text-white container mx-auto relative z-10">
+  <p className="font-bold font-body md:text-6xl lg:text-7xl text-3xl md:text-4xl lg:text-4xl py-2 px-2 text-black container mx-auto relative z-10">
     {destination}
   </p>
 </div>
@@ -137,7 +143,7 @@ const TourDetails = () => {
               </h1>
 
               <p className="rounded-full font-bold py-[1.4rem] px-[1.3rem] bg-secondary  text-white">
-                $1200
+                {/* $1200 */}{Price}
               </p>
             </div>
 
@@ -174,7 +180,7 @@ const TourDetails = () => {
             </p>
 
             <p className="font-light text-lg max-w-1xl">
-              I should be incapable of drawing a single stroke at the present
+              {/* I should be incapable of drawing a single stroke at the present
               moment; and yet I feel that I never was a greater artist than now.
               When, while the lovely valley teems with vapour around me, and the
               meridian sun strikes the upper surface of the impenetrable foliage
@@ -185,7 +191,7 @@ const TourDetails = () => {
               little world among the stalks, and grow familiar with the
               countless indescribable forms of the insects and flies, then I
               feel the presence of the Almighty, who formed us in his own image,
-              and the breath
+              and the breath */} {Description}
             </p>
 
             {/* video */}
@@ -198,7 +204,7 @@ const TourDetails = () => {
                       Destination
                     </td>
                     <td className="text-1xl border-b-2 border-t-2   border-slate-300 p-4">
-                      Greece
+                      {/* Greece */}{destination}
                     </td>
                   </tr>
                 </thead>
@@ -208,7 +214,7 @@ const TourDetails = () => {
                       Departure
                     </td>
                     <td className="text-x3 border-b-2   border-slate-300 p-4">
-                      Lorem Ipsum
+                      {/* Lorem Ipsum */}{Departure}
                     </td>
                   </tr>
                   <tr>
@@ -216,7 +222,7 @@ const TourDetails = () => {
                       Departure time
                     </td>
                     <td className="text-x3 border-b-2   border-slate-300 p-4">
-                      9:15am to 9:30am
+                      {/* 9:15am to 9:30am */}{departureTime}
                     </td>
                   </tr>
                   <tr>
@@ -224,7 +230,7 @@ const TourDetails = () => {
                       Return time
                     </td>
                     <td className="text-x4 border-b-2   border-slate-300 p-4">
-                      Approximately 10:30pm
+                      {/* Approximately 10:30pm */}{returnTime}
                     </td>
                   </tr>
                   <tr>
