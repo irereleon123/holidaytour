@@ -8,6 +8,7 @@ import { FaSun } from "react-icons/fa6";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import video from "../assets/video.mp4";
 import { useNavigate, useParams } from 'react-router-dom';
 
 const TourDetails = () => {
@@ -171,13 +172,13 @@ const TourDetails = () => {
               </div>
             </div>
 
-            <p className="font-light text-1x1 text-lg max-w-1xl">
+            {/* <p className="font-light text-1x1 text-lg max-w-1xl">
               I should be incapable of drawing a single stroke at the present
               moment; and yet I feel that I never was a greater artist than now.
               When, while the lovely valley teems with vapour around me, and the
               meridian sun strikes the upper surface of the impenetrable foliage
               of my trees, and but a few stray gleams.
-            </p>
+            </p> */}
 
             <p className="font-light text-lg max-w-1xl">
               {/* I should be incapable of drawing a single stroke at the present
@@ -195,6 +196,18 @@ const TourDetails = () => {
             </p>
 
             {/* video */}
+            <div className="tour-video">
+                    <video
+                      width="840"
+                      height="360"
+                      muted
+                      controls
+                      loop
+                      autoPlay
+                    >
+                      <source src={video} type="video/mp4" />
+                    </video>
+                  </div>
 
             <div className="font-small flex justify-start">
               <table className="">
