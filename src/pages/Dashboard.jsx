@@ -6,17 +6,30 @@ import { RiContactsBook2Line } from "react-icons/ri";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { GiExitDoor } from "react-icons/gi";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { FaUserAlt } from "react-icons/fa";
 
 const Dashboard = () => {
+  
   const navigate = useNavigate();
+  const token= localStorage.getItem("token");
+  const userString=localStorage.getItem("user");
+  const user= JSON.parse(userString);
 
   const handleLogout = () => {
     localStorage.removeItem('token'); 
     navigate('/login'); 
   };
 
-
+useEffect(()=>{
+  console.log(user);
+  console.log(token);
+  if(token && user.role =="user"){
+  navigate("/");
+  }else if(!token){
+  navigate("/login");
+  }
+})
   return (
     <div className="px-1 flex flex-col md:flex-row justify-between">
       <div className="w-full md:w-1/6 flex-col px-1 shadow-xl rounded-xl items-center">
