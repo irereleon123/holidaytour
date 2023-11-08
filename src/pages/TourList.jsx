@@ -79,7 +79,13 @@ const TourList = () => {
         Tour list
       </p>
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br />
 <br /><br /><br />
+<br /><br /><br />
+<br /><br /><br />
+<br /><br /><br />
+
+
       <div className="container flex flex-col md:flex-row mx-auto items-center relative">
         <div className="w-full md:w-2/3 flex flex-col items-center md:items-start md:justify-evenly mt-8 md:mt-24">
           <div className="mt-8 md:mt-28">
