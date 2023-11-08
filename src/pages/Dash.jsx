@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,6 +13,11 @@ import {
 
 import { Line } from 'react-chartjs-2';
 import { Pie } from 'react-chartjs-2';
+import axios from "axios";
+import Statscard from "./Statscard";
+import Tour from "./TourDash";
+import Bookings from "./BookingsDash";
+import UserDash from "./UserDash";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -25,6 +30,99 @@ ChartJS.register(
 );
 
 const Dash = () => {
+  let token = localStorage.getItem("token");
+ 
+  // users
+
+  const [userdash, setUserdash] = useState([]);
+
+  const fetchUserDash = () => {
+    console.log(token);
+    axios({
+      method: "GET",
+      url: "https://holiday-planner-4lnj.onrender.com/api/v1/auth/users",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        setUserdash(response.data);
+        console.log(response);
+      });
+  };
+
+  useEffect(() => {
+    fetchUserDash();
+  }, []);
+
+  // booking
+
+  const [bookings, setBookings] = useState([]);
+
+  const fetchBookings = () => {
+    axios({
+      method: "GET",
+      url: "https://holiday-planner-4lnj.onrender.com/api/v1/booking/view",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        setBookings(response.data);
+        console.log(response);
+      });
+  };
+
+  useEffect(() => {
+    fetchBookings();
+  }, []);
+
+  // tour lists
+  const [tour, setTour] = useState([]);
+
+  const fetchTour = () => {
+    console.log(token);
+
+    axios({
+      method: "GET",
+      url: "https://holiday-planner-4lnj.onrender.com/api/v1/tour/",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        setTour(response.data);
+        console.log(response);
+      });
+  };
+
+  useEffect(() => {
+    fetchTour();
+  }, []);
+
+
+  const [chart, setChart] = useState([]);
+  const fetchChart = () => {
+    axios({
+      method: "GET",
+      url: "https://holiday-planner-4lnj.onrender.com/api/v1/count?year=2023",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((Response) => {
+        setChart(Response.data);
+        console.log(Response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    fetchChart();
+  }, []);
+
+
   const options = {
   responsive: true,
   plugins: {
@@ -38,14 +136,14 @@ const Dash = () => {
   },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels = chart?.map((cart)=> cart.label);
 
 const data = {
   labels,
   datasets: [
     {
-      label: 'Dataset 1',
-      data: ['19','70','40','19','56','27','30'],
+      label: `Number of Booking for ${chart?.length} Months`,
+      data: chart?.map((cart)=>cart.count),
       borderColor: '#7B3F00',
       backgroundColor: '#7B3F00',
     },
@@ -82,30 +180,9 @@ const piedata = {
         </header>
 
         <section className="bg-white py-8 px-6 flex flex-wrap justify-around">
-          <div className="w-full md:w-1/3 lg:w-1/4 p-8 rounded-lg border border-black border-solid md:flex items-center">
-            <img
-              src="https://th.bing.com/th/id/OIP.ZpwmxdxIuENh8NWlQY68jwHaF7?w=190&h=180&c=7&r=0&o=5&pid=1.7"
-              alt="Tours"
-              width={40}
-            />
-            <p className="text-black text-xl font-bold">38 Tours</p>
-          </div>
-          <div className="w-full md:w-1/3 lg:w-1/4 p-8 rounded-lg border border-black border-solid md:flex items-center">
-            <img
-              src="https://th.bing.com/th/id/OIP.ZpwmxdxIuENh8NWlQY68jwHaF7?w=190&h=180&c=7&r=0&o=5&pid=1.7"
-              alt="Users"
-              width={40}
-            />
-            <p className="text-black text-xl font-bold">500 Users</p>
-          </div>
-          <div className="w-full md:w-1/3 lg:w-1/4 p-8 rounded-lg border border-black border-solid md:flex items-center">
-            <img
-              src="https://th.bing.com/th/id/OIP.ZpwmxdxIuENh8NWlQY68jwHaF7?w=190&h=180&c=7&r=0&o=5&pid=1.7"
-              alt="Bookings"
-              width={40}
-            />
-            <p className="text-black text-xl font-bold">50 Bookings</p>
-          </div>
+           <Statscard title="tour" amount={tour.length}/>
+           <Statscard title="book" amount={bookings.length}/>
+           <Statscard title="user" amount={userdash.length}/>
         </section>
 
         <section className="bg-white py-8 px-6 flex flex-col lg:flex-row justify-center">
