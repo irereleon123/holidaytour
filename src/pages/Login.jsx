@@ -22,28 +22,25 @@ const Login = () => {
         password: passWord,
       },
     })
-      .then((response) => {
-        localStorage.setItem=("user",JSON.stringify(response.data.user));
-        const user=localStorage.getItem("user");
-        console.log(user);
-        
-
-
-        console.log(token);
-        console.log(response,"response");
-        localStorage.setItem("token",response.data.access_token)
-        const token=localStorage.getItem("token")
-        alert("Login succesfull");
-        // navigate("../dashboard");
-        setTimeout(()=>{
-          if(response.data.user.role =="admin")
-          {
-            navigate("../dashboard")
-          }else{
-            navigate("/")
-          }
-        },5000)
-        })
+    .then((response) => {
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      const user = JSON.parse(localStorage.getItem("user")); 
+      console.log(user);
+    
+      console.log(response, "response");
+      localStorage.setItem("token", response.data.access_token);
+      const token = localStorage.getItem("token");
+      alert("Login successful");
+    
+      setTimeout(() => {
+        if (user.role === "admin") {
+          navigate("../dashboard");
+        } else {
+          navigate("/");
+        }
+      }, 5000);
+    })
+    
       .catch((error) => {
         console.log(error);
         alert("An error happened");
