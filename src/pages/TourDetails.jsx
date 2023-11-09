@@ -107,8 +107,8 @@ const TourDetails = () => {
   return (
     <>
 <div className="text-center mb-5 md:mb-10 lg:mb-20 px-4 md:px-8 lg:px-20 py-40 md:py-60 lg:py-80 relative">
-  <div className="absolute top-0 left-0 w-screen h-screen bg-repeat md:bg-no-repeat" style={{ backgroundImage: `url(${backdropImage})` }} />
-  <p className="font-bold font-body md:text-6xl lg:text-7xl text-3xl md:text-4xl lg:text-4xl py-2 px-2 text-black container mx-auto relative z-10">
+<div className="absolute top-0 left-0 w-screen h-screen bg-cover bg-center md:bg-no-repeat" style={{ backgroundImage: `url(${backdropImage})` }} />
+<p className="font-bold font-body md:text-6xl lg:text-7xl text-3xl md:text-4xl lg:text-4xl py-2 px-2 text-yellow container mx-auto relative z-10">
     {destination}
   </p>
 </div>
