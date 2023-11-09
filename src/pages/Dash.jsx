@@ -186,7 +186,7 @@ const piedata = {
         </section>
 
         <section className="bg-white py-8 px-6 flex flex-col lg:flex-row justify-center">
-          <div className="w-full lg:w-1/4">
+          <div className="w-full lg:w-1/2">
             <Line options={options} data={data} />
           </div>
           <div className="w-full lg:w-1/5 mt-4 lg:mt-0">
