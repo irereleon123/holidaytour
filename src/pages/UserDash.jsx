@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AiFillEdit } from "react-icons/ai";
 import { AiFillDelete } from "react-icons/ai";
 import { ToastContainer, toast } from 'react-toastify';
+import ReactPaginate from "react-paginate";
 import axios from "axios";
 
 // fetch data
@@ -10,6 +11,26 @@ import axios from "axios";
 const UserDash = () => {
   const [userdash, setUserdash] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [pageNumber, setPageNumber] = useState(0);
+  const userdashPerPage = 7;
+  const pageCount = Math.ceil(userdash.length / userdashPerPage);
+  const pagesVisited = pageNumber * userdashPerPage;
+  const displayuserdash = userdash
+    .slice(pagesVisited, pagesVisited + userdashPerPage)
+    .map((item, index) => {
+      return (
+        <tr key={index}>
+          <td className="border border-green-600 px-1 py-2">{item.email}</td>
+          <td className="border border-green-600 px-1 py-2">{item.fullName}</td>
+          <td className="border border-green-600 px-1 py-2">{item.role}</td>
+          <td className="border border-green-600 px-1 py-2">{item.Action}
+            <button onClick={() => handleUpdateUsedash(item._id)}><AiFillEdit /></button>
+            <button onClick={() => handleDelete(item._id)}><AiFillDelete /></button>
+            <ToastContainer />
+          </td>
+        </tr>
+      );
+    });
 
   const fetchUserDash = () => {
     setIsLoading(true);
@@ -70,6 +91,9 @@ const UserDash = () => {
   const handleUpdate = (index) => {
     console.log("Update tour at index:", index);
   };
+  const changePage=({ selected })=>{
+    setPageNumber(selected)
+  };
 
   return (
     <div className="px-1 flex flex-col md:flex-row justify-between">
@@ -84,22 +108,21 @@ const UserDash = () => {
             </tr>
           </thead>
           <tbody>
-            {userdash.map((item, index) => {
-              return (
-                <tr key={index}>
-                  <td className="border border-green-600 px-1 py-2">{item.email}</td>
-                  <td className="border border-green-600 px-1 py-2">{item.fullName}</td>
-                  <td className="border border-green-600 px-1 py-2">{item.role}</td>
-                  <td className="border border-green-600 px-1 py-2">{item.Action}
-                    <button onClick={() => handleUpdateUsedash(item._id)}><AiFillEdit /></button>
-                    <button onClick={() => handleDelete(item._id)}><AiFillDelete /></button>
-                    <ToastContainer />
-                  </td>
-                </tr>
-              )
-            })}
+        {displayuserdash}
           </tbody>
         </table>
+        <ReactPaginate
+  previousLabel={"Previous"}
+  nextLabel={"Next"}
+  pageCount={pageCount}
+  onPageChange={changePage}
+  containerClassName={"flex justify-center mt-4"}
+  previousLinkClassName={"p-2 border rounded-md border-gray-400 mr-2 hover:bg-gray-200 cursor-pointer"}
+  nextLinkClassName={"p-2 border rounded-md border-gray-400 ml-2 hover:bg-gray-200 cursor-pointer"}
+  disabledClassName={"text-gray-400 cursor-not-allowed"}
+  activeClassName={"bg-blue-500 text-white rounded-md p-2 cursor-pointer"}
+/>
+<br />
       </div>
     </div>
   )

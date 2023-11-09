@@ -3,11 +3,46 @@ import { Link, useNavigate } from "react-router-dom";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { IoMdAdd } from "react-icons/io";
 import { ToastContainer, toast } from 'react-toastify';
+import ReactPaginate from "react-paginate";
 import axios from "axios";
 
 const Tour = () => {
   const [tour, setTour] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [pageNumber, setPageNumber] = useState(0);
+  const tourPerPage = 4;
+  const pageCount = Math.ceil(tour.length / tourPerPage);
+  const pagesVisited = pageNumber * tourPerPage;
+  const displayTour = tour
+    .slice(pagesVisited, pagesVisited + tourPerPage)
+
+            .map((item, index) => {
+              return (
+                <tr key={index}>
+                  <td className="border border-green-600 px-4 py-2">
+                    <img src={item.backdropImage} height={"100px"} width={"200px"} alt={item.destination} />
+                  </td>
+                  <td className="border border-green-600 px-4 py-2">{item.destination}</td>
+                  <td className="border border-green-600 px-4 py-2">{item.Description}</td>
+                  <td className="border border-green-600 px-4 py-2">{item.Duration}</td>
+                  <td className="border border-green-600 px-4 py-2">{item.GroupSize}</td>
+                  <td className="border border-green-600 px-4 py-2">{item.Discount}</td>
+                  <td className="border border-green-600 px-4 py-2">{item.Price}</td>
+                  <td className="border border-green-600 px-4 py-2">{item.TourType}</td>
+                  <td className="border border-green-600 px-4 py-2">{item.Departure}</td>
+                  <td className="border border-green-600 px-4 py-2">{item.Seats}</td>
+                  <td className="border border-green-600 px-4 py-2">{item.fromMonth}</td>
+                  <td className="border border-green-600 px-4 py-2">{item.toMonth}</td>
+                  <td className="border border-green-600 px-4 py-2">{item.departureTime}</td>
+                  <td className="border border-green-600 px-4 py-2">{item.returnTime}</td>
+                  <td className="border border-green-600 px-4 py-2">
+                    <button onClick={() => handleUpdateTour(item._id)}><AiFillEdit /></button>
+                    <button onClick={() => handleDelete(item._id)}><AiFillDelete /></button>
+                    <ToastContainer />
+                  </td>
+                </tr>
+              );
+            })
 
   const fetchTour = () => {
     setIsLoading(true);
@@ -69,6 +104,9 @@ const Tour = () => {
     console.log("Update tour at index:", index);
   };
 
+  const changePage=({ selected })=>{
+    setPageNumber(selected)
+  };
   return (
     <div className="container mx-auto">
       <Link to="/Dashboard/Addtour">
@@ -102,35 +140,21 @@ const Tour = () => {
             </tr>
           </thead>
           <tbody>
-            {tour.map((item, index) => {
-              return (
-                <tr key={index}>
-                  <td className="border border-green-600 px-4 py-2">
-                    <img src={item.backdropImage} height={"100px"} width={"200px"} alt={item.destination} />
-                  </td>
-                  <td className="border border-green-600 px-4 py-2">{item.destination}</td>
-                  <td className="border border-green-600 px-4 py-2">{item.Description}</td>
-                  <td className="border border-green-600 px-4 py-2">{item.Duration}</td>
-                  <td className="border border-green-600 px-4 py-2">{item.GroupSize}</td>
-                  <td className="border border-green-600 px-4 py-2">{item.Discount}</td>
-                  <td className="border border-green-600 px-4 py-2">{item.Price}</td>
-                  <td className="border border-green-600 px-4 py-2">{item.TourType}</td>
-                  <td className="border border-green-600 px-4 py-2">{item.Departure}</td>
-                  <td className="border border-green-600 px-4 py-2">{item.Seats}</td>
-                  <td className="border border-green-600 px-4 py-2">{item.fromMonth}</td>
-                  <td className="border border-green-600 px-4 py-2">{item.toMonth}</td>
-                  <td className="border border-green-600 px-4 py-2">{item.departureTime}</td>
-                  <td className="border border-green-600 px-4 py-2">{item.returnTime}</td>
-                  <td className="border border-green-600 px-4 py-2">
-                    <button onClick={() => handleUpdateTour(item._id)}><AiFillEdit /></button>
-                    <button onClick={() => handleDelete(item._id)}><AiFillDelete /></button>
-                    <ToastContainer />
-                  </td>
-                </tr>
-              );
-            })}
+        {displayTour}
           </tbody>
         </table>
+<ReactPaginate
+  previousLabel={"Previous"}
+  nextLabel={"Next"}
+  pageCount={pageCount}
+  onPageChange={changePage}
+  containerClassName={"flex justify-center mt-4"}
+  previousLinkClassName={"p-2 border rounded-md border-gray-400 mr-2 hover:bg-gray-200 cursor-pointer"}
+  nextLinkClassName={"p-2 border rounded-md border-gray-400 ml-2 hover:bg-gray-200 cursor-pointer"}
+  disabledClassName={"text-gray-400 cursor-not-allowed"}
+  activeClassName={"bg-blue-500 text-white rounded-md p-2 cursor-pointer"}
+/>
+<br />
       </div>
     </div>
   );
