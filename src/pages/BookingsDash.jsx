@@ -14,9 +14,9 @@ const Bookings = () => {
   const pageCount = Math.ceil(bookings.length / bookingsPerPage);
   const pagesVisited = pageNumber * bookingsPerPage;
   const displaybookings = bookings
-    .slice(pagesVisited, pagesVisited + bookingsPerPage)
-    .map((item, index) => {
-      return (
+  .slice(pagesVisited, pagesVisited + bookingsPerPage)
+  .map((item, index) => {
+    return (
       <tr key={index}>
         <td className="border border-green-600 px-4 py-2">{item.fullname}</td>
         <td className="border border-green-600 px-4 py-2">{item.email}</td>
@@ -114,10 +114,10 @@ const fetchBookings = () => {
   pageCount={pageCount}
   onPageChange={changePage}
   containerClassName={"flex justify-center mt-4"}
-  previousLinkClassName={"p-2 border rounded-md border-gray-400 mr-2 hover:bg-gray-200 cursor-pointer"}
-  nextLinkClassName={"p-2 border rounded-md border-gray-400 ml-2 hover:bg-gray-200 cursor-pointer"}
+  previousLinkClassName={" bg-orange-400 p-2 border rounded-md border-gray-400 mr-2 hover:bg-gray-200 cursor-pointer"}
+  nextLinkClassName={"bg-orange-400 p-2 border rounded-md border-gray-400 ml-2 hover:bg-gray-200 cursor-pointer"}
   disabledClassName={"text-gray-400 cursor-not-allowed"}
-  activeClassName={"bg-blue-500 text-white rounded-md p-2 cursor-pointer"}
+  activeClassName={"bg-orange-800 text-white rounded-md p-2 cursor-pointer"}
 />
 <br />
       </div>
