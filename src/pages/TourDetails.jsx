@@ -427,34 +427,6 @@ const TourDetails = () => {
               Hand-picked tours and activities
             </p>
           </div>
-
-          <div className="bg-secondary mt-8 mb-8  p-8 pb-20   px-14 space-y-2 flex flex-col items-start text-center   ">
-            <h2 className="font-semibold text-2xl text-white">
-              Got a question
-            </h2>
-            <p className="font-light text-white flex items-center ">
-              Do not hesitage to give us a call. We are an expert team and we
-              are happy to talk to you.
-            </p>
-            <p className="font-light flex items-center">
-              <span className="font-bold">
-                <BsChevronRight />
-              </span>
-              Customer care available 24/7
-            </p>
-            <p className="font-light flex items-center">
-              <span className="font-bold">
-                <BsChevronRight />
-              </span>
-              Free travel insurance
-            </p>
-            <p className="font-light flex items-center">
-              <span className="font-bold">
-                <BsChevronRight />
-              </span>
-              Hand picked tours and activities
-            </p>
-          </div>
         </div>
       </div>
     </>
