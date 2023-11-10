@@ -121,7 +121,7 @@ const TourDetails = () => {
         />
       ) : (
         <>
-<div className="text-center mb-5 md:mb-10 lg:mb-20 px-4 md:px-8 lg:px-20 py-40 md:py-60 lg:py-80 relative">
+<div className="py-8 px-8">
         <div className="absolute top-0 left-0 w-screen h-screen bg-cover bg-center md:bg-no-repeat" style={{ backgroundImage: `url(${backdropImage})` }} />
         <p className="font-bold font-body md:text-5xl lg:text-6xl text-xl md:text-3xl lg:text-3xl py-2 px-2 text-yellow container mx-auto relative z-10">
           {destination}
@@ -131,8 +131,8 @@ const TourDetails = () => {
 <br /><br /><br /><br /><br /> <br/> <br/><br/>
 <br /><br /><br /><br />
 
-      <div className="container mx-auto flex">
-        <div className="w-1/1 container mt-20 mx-auto shadow-lg">
+      <div className="container flex flex-col md:flex-row mx-auto items-center relative">
+        <div className="mt-8 md:mt-28">
           <form action="" className="flex justify-center  ">
             <div className=" border-2 border-slate-100 rounded-l-lg mr-0 py-1 px-1 bg-secondary text-white  ">
               <label htmlFor="" className=" text-center">
@@ -210,82 +210,83 @@ const TourDetails = () => {
                   </div>
 
             <div className="font-small flex justify-start">
-              <table className="">
-                <thead>
-                  <tr className="">
-                    <td className="font-semibold text-1xl px-6 border-t-2 border-b-2 border-r-2 border-slate-400 p-3">
-                      Destination
-                    </td>
-                    <td className="text-1xl border-b-2 border-t-2   border-slate-300 p-4">
-                      {/* Greece */}{destination}
-                    </td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="font-semibold text-1xl px-6 border-b-2 border-r-2 border-slate-300">
-                      Departure
-                    </td>
-                    <td className="text-x3 border-b-2   border-slate-300 p-4">
-                      {/* Lorem Ipsum */}{Departure}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="font-semibold text-1xl px-6 border-b-2 border-r-2 border-slate-300">
-                      Departure time
-                    </td>
-                    <td className="text-x3 border-b-2   border-slate-300 p-4">
-                      {/* 9:15am to 9:30am */}{departureTime}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="font-semibold text-1xl px-6 border-b-2 border-r-2 border-slate-300">
-                      Return time
-                    </td>
-                    <td className="text-x4 border-b-2   border-slate-300 p-4">
-                      {/* Approximately 10:30pm */}{returnTime}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="font-semibold text-1xl px-6 border-b-2 border-r-2 border-slate-300">
-                      Dress Code
-                    </td>
-                    <td className="text-x3 border-b-2   border-slate-300 p-4">
-                      Comfortable clothing and light jacket
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="font-semibold text-1xl px-6 border-b-2 border-r-2 border-slate-300">
-                      Price Include
-                    </td>
-                    <td className="text-x3 border-b-2   border-slate-300 p-4">
-                      <div className="flex flex-col">
-                        <p>5 star accomodation</p>
-                        <p>Air fases</p>
-                        <p>3 night hotel accomodation</p>
-                        <p>All transport in destination location</p>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="font-semibold text-1xl px-6 border-b-2 border-r-2 border-slate-100">
-                      Price Not Included
-                    </td>
-                    <td className="text-x3 border-b-2   border-slate-300 p-3">
-                      <div className="flex flex-col">
-                        <p>Guide service Fee</p>
-                        <p>Any private expenses</p>
-                        <p>Room service Fees</p>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <table className="border-collapse border-2 border-gray-300">
+  <thead>
+    <tr className="">
+      <td className="font-semibold text-1xl px-6 border-t-2 border-b-2 border-r-2 border-slate-400 p-3">
+        Destination
+      </td>
+      <td className="text-1xl border-b-2 border-t-2 border-slate-300 p-4">
+        {/* Greece */}{destination}
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td className="font-semibold text-1xl px-6 border-b-2 border-r-2 border-slate-300">
+        Departure
+      </td>
+      <td className="text-x3 border-b-2 border-slate-300 p-4">
+        {/* Lorem Ipsum */}{Departure}
+      </td>
+    </tr>
+    <tr>
+      <td className="font-semibold text-1xl px-6 border-b-2 border-r-2 border-slate-300">
+        Departure time
+      </td>
+      <td className="text-x3 border-b-2 border-slate-300 p-4">
+        {/* 9:15am to 9:30am */}{departureTime}
+      </td>
+    </tr>
+    <tr>
+      <td className="font-semibold text-1xl px-6 border-b-2 border-r-2 border-slate-300">
+        Return time
+      </td>
+      <td className="text-x4 border-b-2 border-slate-300 p-4">
+        {/* Approximately 10:30pm */}{returnTime}
+      </td>
+    </tr>
+    <tr>
+      <td className="font-semibold text-1xl px-6 border-b-2 border-r-2 border-slate-300">
+        Dress Code
+      </td>
+      <td className="text-x3 border-b-2 border-slate-300 p-4">
+        Comfortable clothing and light jacket
+      </td>
+    </tr>
+    <tr>
+      <td className="font-semibold text-1xl px-6 border-b-2 border-r-2 border-slate-300">
+        Price Include
+      </td>
+      <td className="text-x3 border-b-2 border-slate-300 p-4">
+        <div className="flex flex-col">
+          <p>5 star accomodation</p>
+          <p>Air fases</p>
+          <p>3 night hotel accomodation</p>
+          <p>All transport in destination location</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td className="font-semibold text-1xl px-6 border-b-2 border-r-2 border-slate-100">
+        Price Not Included
+      </td>
+      <td className="text-x3 border-b-2 border-slate-300 p-3">
+        <div className="flex flex-col">
+          <p>Guide service Fee</p>
+          <p>Any private expenses</p>
+          <p>Room service Fees</p>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
             </div>
           </div>
         </div>
-        <div className="w-1/1">
-          <div className="md-4rem block-col p-4 transform translate-y-[-5.5rem]  bg-white  ">
+        <div className="w-full md:w-1/3 flex flex-col space-y-6 mb-10 mt-8 md:mt-24">
+          <div className="flex flex-col p-4 shadow-xl transform translate-y-[-1.5rem] bg-white">
             <h2 className="font-semibold text-1xl flex justify-center">
               Book your tour
             </h2>
