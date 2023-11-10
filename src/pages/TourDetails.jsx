@@ -130,6 +130,7 @@ const TourDetails = () => {
 <br /><br /><br /><br /><br /> <br/> <br/><br/>
 <br /><br /><br /><br /><br /> <br/> <br/><br/>
 <br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br />
 
       <div className="container flex flex-col md:flex-row mx-auto items-center relative">
         <div className="mt-8 md:mt-28">
