@@ -127,7 +127,7 @@ const TourDetails = () => {
           {destination}
   </p>
 </div>
-{/* {/* <br /><br /><br /><br /><br />*/} <br/> <br/><br/>
+dd<br /><br /> <br/> <br/><br/>
 <br /><br /><br /><br /><br /> <br/> <br/><br/>
 <br /><br /><br /><br />
 
