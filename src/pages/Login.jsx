@@ -1,9 +1,10 @@
-
-
 import React from "react";
+import { Audio } from 'react-loader-spinner';
 import { useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate,Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const Login = () => {
   const [passWord, setPassword] = useState("");
@@ -23,6 +24,7 @@ const Login = () => {
       },
     })
     .then((response) => {
+      setIsLoading(false)
       localStorage.setItem("user", JSON.stringify(response.data.user));
       const user = JSON.parse(localStorage.getItem("user")); 
       console.log(user);
@@ -30,8 +32,7 @@ const Login = () => {
       console.log(response, "response");
       localStorage.setItem("token", response.data.access_token);
       const token = localStorage.getItem("token");
-      alert("Login successful");
-    
+      toast.success('login successfully');
       setTimeout(() => {
         if (user.role === "admin") {
           navigate("../dashboard");
@@ -43,7 +44,7 @@ const Login = () => {
     
       .catch((error) => {
         console.log(error);
-        alert("An error happened");
+        toast.error(error.message);
       });
 
     setEmail("");
@@ -99,7 +100,17 @@ const Login = () => {
               type="submit"
               className="bg-primary text-white font-bold py-2 px-4 rounded-lg w-full mt-8 hover:bg-secondary transition-all duration-200 ease-in-out"
             >
-              {setIsLoading? "logging in...":"login"}
+              {isLoading?
+  <Audio
+  height="20"
+  width="20"
+  radius="9"
+  color="green"
+  ariaLabel="loading"
+  wrapperStyle
+  wrapperClass
+/>
+ :"login"}
             </button>
           </div>
         </form>
@@ -108,6 +119,7 @@ const Login = () => {
             <Link to={"/Sign_up"}><span className="text-secondary">Sign up</span></Link>
           </p>
       </div>
+      <ToastContainer />
     </div>
   );
 };

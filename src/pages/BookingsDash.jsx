@@ -4,6 +4,7 @@ import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { ToastContainer, toast } from 'react-toastify';
 import ReactPaginate from "react-paginate";
 import axios from "axios";
+import { Audio, Rings } from "react-loader-spinner";
 
 const Bookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -46,6 +47,7 @@ const fetchBookings = () => {
       },
     })
       .then((response) => {
+        setIsLoading(false)
         setBookings(response.data);
         console.log(response);
       });
@@ -66,9 +68,9 @@ const fetchBookings = () => {
         },
       })
         .then((response) => {
+          setIsLoading(true);
           toast.success("Booking deleted successfully");
           console.log(response, "response");
-          // Refresh bookings after deletion
           fetchBookings();
         })
         .catch((error) => {
@@ -89,6 +91,18 @@ const fetchBookings = () => {
 
   return (
     <div className="">
+             {isLoading ? (
+        <Audio
+          height="300"
+          width="1000"
+          radius="9"
+          margin-left="500"
+          color="#7B3F00"
+          ariaLabel="loading"
+          className="mx-auto"
+        />
+      ) : ( 
+        <>
       <div className="overflow-x-auto">
         <table className="table min-w-30% divide-y shadow-lg border-collapse border border-yellow-800">
           <thead>
@@ -121,6 +135,8 @@ const fetchBookings = () => {
 />
 <br />
       </div>
+      </>
+      )}
     </div>
   );
 };

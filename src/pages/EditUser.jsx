@@ -6,6 +6,7 @@ import { Navigate,useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { Audio } from 'react-loader-spinner';
 
 function EditUser() {
   const [email, setEmail] = useState();
@@ -62,6 +63,7 @@ axios({
   },
 })
   .then((response) => {
+    setIsLoading(true);
       console.log(response);
       toast.success('user updated successfully');
       setTimeout(() => navigate('/dashboard/UserDash'), 3000);
@@ -140,7 +142,16 @@ return (
               type="submit"
               className="bg-primary text-white font-bold py-2 px-4 rounded-lg w-full mt-8 hover:bg-secondary transition-all duration-200 ease-in-out"
             >
-              {setIsLoading? "edit user in...":"edit"}
+              {setIsLoading?   
+  <Audio
+  height="20"
+  width="20"
+  radius="9"
+  color="green"
+  ariaLabel="loading"
+  wrapperStyle
+  wrapperClass
+/>:"edit"}
             </button>
             <ToastContainer/>
           </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import { Audio } from 'react-loader-spinner';
 
 const EditBooking = () => {
   const [fullname, setFullName] = useState('');
@@ -32,6 +33,7 @@ const EditBooking = () => {
     })
     .then((response) => {
       console.log(response, "response");
+      setIsLoading(false)
       setFullName(response?.data?.fullname);
       setEmail(response?.data?.email);
       setConfirmEmail(response?.data?.confirmEmail); 
@@ -71,6 +73,7 @@ const EditBooking = () => {
       },
     })
       .then((response) => {
+        setIsLoading(true);
         console.log(response);
         toast.success('book updated successfully');
         setTimeout(() => navigate('/dashboard/bookingsDash'), 3000);
@@ -183,7 +186,16 @@ const EditBooking = () => {
 
     <button 
     className="px-6 bg-secondary text-white py-4 rounded-lg text-xl">
-      Book now
+       {isLoading? <Audio
+  height="20"
+  width="20"
+  radius="9"
+  color="green"
+  ariaLabel="loading"
+  wrapperStyle
+  wrapperClass
+/>
+      :"Book now"}
     </button>
   </div>
 </form>

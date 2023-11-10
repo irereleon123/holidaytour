@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Navigate,useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
+import { Audio } from 'react-loader-spinner';
 import axios from "axios";
 
 const Sign_up = () => {
@@ -31,10 +32,11 @@ const Sign_up = () => {
     })
       .then((response) => {
         console.log(response,"response");
+        setIsLoading(false);
         localStorage.setItem("token",response.data.acces_token);
         localStorage.setItem("user",JSON.stringify(response.data.user));
         navigate("/");
-        alert("Sign up successful");
+        toast.success('login successfully');
         setIsLoading(false);
       })
       .catch((error) => {
@@ -128,7 +130,17 @@ const Sign_up = () => {
               type="submit"
               className="bg-primary text-white font-bold py-2 px-4 rounded-lg w-full mt-8 hover:bg-secondary transition-all duration-200 ease-in-out"
             >
-              {setIsLoading? "logging in...":"login"}
+              {isLoading?
+                <Audio
+                height="20"
+                width="20"
+                radius="9"
+                color="green"
+                ariaLabel="loading"
+                wrapperStyle
+                wrapperClass
+              />
+               :"register"}
             </button>
             <ToastContainer/>
           </div>

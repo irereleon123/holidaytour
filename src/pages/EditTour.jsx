@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Navigate,useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Audio } from 'react-loader-spinner';
 
 function EditTour() {
   const [backdropImage, setBackdropImage] = useState('');
@@ -21,6 +22,7 @@ function EditTour() {
   const [toMonth, setTomonth] = useState('');
   const [departureTime, setDeparturetime] = useState('');
   const [returnTime, setReturntime] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const params = useParams()
     const tourId = params.id
@@ -96,6 +98,7 @@ function EditTour() {
     }
     ).then((response)=>{
         console.log(response); 
+        setIsLoading(true)
             toast.success("Tour-updated successfully");
             setTimeout(()=>
             navigate("/Dashboard/TourDash")
@@ -250,7 +253,18 @@ return (
           className="px-6 bg-secondary text-white py-4 rounded-lg text-xl"
           type="submit"
         >
-          Submit
+          {isLoading?
+            <Audio
+            height="20"
+            width="20"
+            radius="9"
+            color="green"
+            ariaLabel="loading"
+            wrapperStyle
+            wrapperClass
+          />
+          :"submit update"}
+          
         </button>
         <ToastContainer />
       </fieldset>

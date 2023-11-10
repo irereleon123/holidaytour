@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { Navigate,useNavigate } from 'react-router-dom';
+import { Audio } from 'react-loader-spinner';
 
 function Addtour() {
   const [backdropImage, setBackdropImage] = useState('');
@@ -19,6 +20,7 @@ function Addtour() {
   const [toMonth, setTomonth] = useState('');
   const [departureTime, setDeparturetime] = useState('');
   const [returnTime, setReturntime] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleFileChange = (e) => {
@@ -47,26 +49,22 @@ function Addtour() {
 
     try {
       let token=localStorage.getItem("token")
-      const response = await
-
-      axios({
+      const response = await axios({
         method: "POST",
         url: 'https://holiday-planner-4lnj.onrender.com/api/v1/tour/create',
         data: data,
         headers: {
-          Authorization: 'Bearer ${token}',
-        } 
+          Authorization: `Bearer ${token}`,
+        }  
     });
-      console.log(response.data);
-      localStorage.setItem("token",response.data.access_token)
-      toast.success("tour added succesfull");
-      navigate("/dashboard/Tourdash");
-    } catch (error) {
-      console.log(error);
-      toast.error("An error happened");
-    }
-  };
-
+    console.log(response);
+    setIsLoading(true);
+    toast.success("tour-added-successfuly");
+  } catch (error) {
+    console.log(error);
+    toast.error(error.message);
+  }
+}
   return (
     <form onSubmit={handleSubmit}>
       <fieldset>
@@ -211,6 +209,15 @@ function Addtour() {
           className="px-6 bg-secondary text-white py-4 rounded-lg text-xl"
           type="submit"
         >
+          {isLoading?
+            <Audio
+            height="20"
+            width="20"
+            radius="9"
+            color="green"
+            ariaLabel="loading"
+            wrapperStyle
+           /> :"edit"}
           Submit
         </button>
         <ToastContainer />

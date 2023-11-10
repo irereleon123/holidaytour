@@ -10,7 +10,7 @@ import {
   Legend,
   ArcElement,
 } from 'chart.js';
-
+import { Audio } from "react-loader-spinner";
 import { Line } from 'react-chartjs-2';
 import { Pie } from 'react-chartjs-2';
 import axios from "axios";
@@ -31,12 +31,14 @@ ChartJS.register(
 
 const Dash = () => {
   let token = localStorage.getItem("token");
+  const [isLoading, setIsLoading] = useState(false);
  
   // users
 
   const [userdash, setUserdash] = useState([]);
 
   const fetchUserDash = () => {
+    setIsLoading(true);
     console.log(token);
     axios({
       method: "GET",
@@ -46,6 +48,7 @@ const Dash = () => {
       },
     })
       .then((response) => {
+        setIsLoading(false);
         setUserdash(response.data);
         console.log(response);
       });
@@ -68,6 +71,7 @@ const Dash = () => {
       },
     })
       .then((response) => {
+        setIsLoading(false);
         setBookings(response.data);
         console.log(response);
       });
@@ -91,6 +95,7 @@ const Dash = () => {
       },
     })
       .then((response) => {
+        setIsLoading(false);
         setTour(response.data);
         console.log(response);
       });
@@ -174,27 +179,42 @@ const piedata = {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-100 flex flex-col">
-        <header className="bg-dark-orange shadow-sm py-4 px-6 flex items-center justify-center">
-          <h1 className="text-2xl font-bold text-gray-800">Hello Dr Lee</h1>
-        </header>
+    <div className="min-h-screen bg-gray-100 flex flex-col">
+      <header className="bg-dark-orange shadow-sm py-4 px-6 flex items-center justify-center">
+        <h1 className="text-2xl font-bold text-gray-800">Hello Dr Lee</h1>
+      </header>
+      {isLoading ? (
+        <Audio
+          height="300"
+          width="1000"
+          radius="9"
+          color="#7B3F00"
+          ariaLabel="loading"
+          className="mx-auto"
 
+        />
+      ) : (
+        <>
         <section className="bg-white py-8 px-6 flex flex-wrap justify-around">
-           <Statscard title="tour" amount={tour.length}/>
-           <Statscard title="book" amount={bookings.length}/>
-           <Statscard title="user" amount={userdash.length}/>
+          <Statscard title="tour" amount={tour.length} />
+          <Statscard title="book" amount={bookings.length} />
+          <Statscard title="user" amount={userdash.length} />
         </section>
-
-        <section className="bg-white py-8 px-6 flex flex-col lg:flex-row justify-center">
-          <div className="w-full lg:w-1/2">
-            <Line options={options} data={data} />
-          </div>
-          <div className="w-full lg:w-1/5 mt-4 lg:mt-0">
-            <Pie data={piedata} />
-          </div>
-        </section>
-      </div>
-    </>
+      
+  
+      <section className="bg-white py-8 px-6 flex flex-col lg:flex-row justify-center">
+        <div className="w-full lg:w-1/2">
+          <Line options={options} data={data} />
+        </div>
+        <div className="w-full lg:w-1/5 mt-4 lg:mt-0">
+          <Pie data={piedata} />
+        </div>
+      </section>
+      </>
+      )}
+    </div>
+  </>
+  
   );
 };
 

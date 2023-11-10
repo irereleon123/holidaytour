@@ -5,6 +5,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { ToastContainer, toast } from 'react-toastify';
 import ReactPaginate from "react-paginate";
 import axios from "axios";
+import { Audio } from "react-loader-spinner";
 
 // fetch data
 
@@ -44,6 +45,7 @@ const UserDash = () => {
       },
     })
       .then((response) => {
+        setIsLoading(false);
         setUserdash(response.data);
         console.log(response);
       });
@@ -97,6 +99,17 @@ const UserDash = () => {
 
   return (
     <div className="px-1 flex flex-col md:flex-row justify-between">
+            {isLoading ? (
+        <Audio
+          height="300"
+          width="1000"
+          radius="9"
+          color="#7B3F00"
+          ariaLabel="loading"
+          className="mx-auto"
+        />
+      ) : (
+        <>
       <div className="table-container overflow-x-auto">
         <table className="table min-w-full divide-y shadow-lg border-collapse border border-yellow-800">
           <thead>
@@ -124,6 +137,8 @@ const UserDash = () => {
 />
 <br />
       </div>
+      </>
+  )}
     </div>
   )
 }
