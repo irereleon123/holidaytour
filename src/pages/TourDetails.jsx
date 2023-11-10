@@ -10,7 +10,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import video from "../assets/video.mp4";
 import { useNavigate, useParams } from 'react-router-dom';
-import {Audio} from "react-loader-spinner"
 
 const TourDetails = () => {
   const [fullName, setFullName] = useState('');
@@ -87,7 +86,6 @@ const TourDetails = () => {
         },
       })
         .then((response) => {
-          setIsLoading(false);
           setBackdropImage(response?.data?.backdropImage);
           setDestination(response?.data?.destination);
           setTitle(response?.data?.title); 
@@ -110,27 +108,15 @@ const TourDetails = () => {
 
   return (
     <>
-    {isloading ? (
-        <Audio
-          height="300"
-          width="1000"
-          radius="9"
-          color="#7B3F00"
-          ariaLabel="loading"
-          className="mx-auto"
-        />
-      ) : (
-        <>
-<div className="py-8 px-8">
-        <div className="absolute top-0 left-0 w-screen h-screen bg-cover bg-center md:bg-no-repeat" style={{ backgroundImage: `url(${backdropImage})` }} />
-        <p className="font-bold font-body md:text-5xl lg:text-6xl text-xl md:text-3xl lg:text-3xl py-2 px-2 text-yellow container mx-auto relative z-10">
-          {destination}
+        <div className="py-8 px-8 h-screen bg-cover bg-center md:bg-no-repeat backdrop-filter backdrop-blur-lg" style={{ backgroundImage: `url(${backdropImage})` }}>
+  <p className="font-bold font-body md:text-5xl lg:text-6xl text-xl md:text-3xl lg:text-3xl py-2 px-2 text-yellow container mx-auto relative z-10">
+    {destination}
   </p>
 </div>
+
+{/* {/* <br /><br /><br /><br /><br />*/}
 <br /><br /><br /><br /><br /> <br/> <br/><br/>
-<br /><br /><br /><br /><br /> <br/> <br/><br/>
-<br /><br /><br /><br />
-<br /><br /><br /><br /><br /><br /><br /><br />
+<br />
 
       <div className="container flex flex-col md:flex-row mx-auto items-center relative">
         <div className="mt-8 md:mt-28">
@@ -441,10 +427,36 @@ const TourDetails = () => {
               Hand-picked tours and activities
             </p>
           </div>
+
+          <div className="bg-secondary mt-8 mb-8  p-8 pb-20   px-14 space-y-2 flex flex-col items-start text-center   ">
+            <h2 className="font-semibold text-2xl text-white">
+              Got a question
+            </h2>
+            <p className="font-light text-white flex items-center ">
+              Do not hesitage to give us a call. We are an expert team and we
+              are happy to talk to you.
+            </p>
+            <p className="font-light flex items-center">
+              <span className="font-bold">
+                <BsChevronRight />
+              </span>
+              Customer care available 24/7
+            </p>
+            <p className="font-light flex items-center">
+              <span className="font-bold">
+                <BsChevronRight />
+              </span>
+              Free travel insurance
+            </p>
+            <p className="font-light flex items-center">
+              <span className="font-bold">
+                <BsChevronRight />
+              </span>
+              Hand picked tours and activities
+            </p>
+          </div>
         </div>
       </div>
-      </>
-      )};
     </>
   );
 };
