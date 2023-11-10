@@ -78,7 +78,10 @@ const TourList = () => {
       <p className="font-bold font-body text-4xl md:text-7xl py-2 px-2 text-white container mx-auto">
         Tour list
       </p>
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
 
 
       <div className="container flex flex-col md:flex-row mx-auto items-center relative">
